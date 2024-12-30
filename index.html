@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaurya Mittal Pvt Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background: linear-gradient(45deg, #8b0000, #1c1c1c);
+            color: white;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            color: #ff0000;
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .warning {
+            font-size: 1.5rem;
+            color: #ff5555;
+            text-align: center;
+        }
+
+        .google-verified {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #0000ff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .left-panel {
+            position: absolute;
+            top: 15%;
+            left: 10px;
+            font-size: 1rem;
+            color: #ff5555;
+            width: 250px;
+        }
+
+        input[type="number"], input[type="text"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1.5rem;
+            border: 2px solid #ff0000;
+            background: #1c1c1c;
+            color: white;
+            text-align: center;
+        }
+
+        .message-box {
+            margin: 20px auto;
+            width: 80%;
+            height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ff0000;
+            color: white;
+            padding: 10px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .blood-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://www.transparenttextures.com/patterns/bloodstains.png') repeat;
+            animation: moveBlood 10s linear infinite;
+        }
+
+        @keyframes moveBlood {
+            from { background-position: 0 0; }
+            to { background-position: -100px -100px; }
+        }
+
+        .exit-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background: linear-gradient(45deg, #8b0000, #1c1c1c);
+            border: 2px solid #ff0000;
+            cursor: pointer;
+        }
+
+        .exit-button:hover {
+            background: linear-gradient(45deg, #ff0000, #1c1c1c);
+        }
+
+        .neon-box {
+            margin: 20px auto;
+            text-align: center;
+            color: #00ff00;
+            font-size: 1.5rem;
+            animation: neon 1s infinite alternate;
+        }
+
+        @keyframes neon {
+            from { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+            to { text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; }
+        }
+
+        .link-button {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid #00ff00;
+            padding: 5px 10px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="google-verified">Google Verified Website <a class="link-button" href="https://images.bannerbear.com/direct/4mGpW3zwrxA1K0AxQw/requests/000/076/934/655/9BvRDJ724zWk5weOzlAKNOd03/cdf542117a72801f15d8d1ca486c20d54ca543b0.pdf" target="_blank">?? Trusted</a></div>
+    <div class="header">?? WARNING - Calculate or use on your own risk. Caution - Device will be hacked by Shaurya</div>
+    <div class="warning">Shaurya Mittal Pvt Calculator</div>
+    <div class="left-panel">
+        You dared to tread where shadows whisper and darkness reigns. By stepping here, you’ve signed your own fate—a fate sealed in blood and fear. There’s no turning back; your screams will echo, but none will hear. Welcome to the end of everything you hold dear.
+    </div>
+
+    <input type="number" id="numberInput" placeholder="Enter a number...">
+    <input type="text" id="textInput" placeholder="Enter text...">
+
+    <div class="message-box" id="messageBox"></div>
+
+    <button class="exit-button" id="exitButton">Close All</button>
+
+    <div class="neon-box">Pay <a href="https://images.bannerbear.com/direct/4mGpW3zwrxA1K0AxQw/requests/000/076/934/655/9BvRDJ724zWk5weOzlAKNOd03/cdf542117a72801f15d8d1ca486c20d54ca543b0.pdf" target="_blank">$1</a> to escape</div>
+
+    <div class="neon-box">Contact Us: <a href="https://www.instagram.com/drunk___captain/?hl=en" target="_blank">Instagram - drunk___captain</a></div>
+
+    <audio autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="blood-animation"></div>
+
+    <script>
+        const numberInput = document.getElementById('numberInput');
+        const textInput = document.getElementById('textInput');
+        const messageBox = document.getElementById('messageBox');
+        const exitButton = document.getElementById('exitButton');
+        let warningDisplayed = false;
+
+        numberInput.addEventListener('input', () => {
+            const value = parseInt(numberInput.value);
+
+            if (isNaN(value)) {
+                if (!warningDisplayed) {
+                    alert('?? WARNING: Invalid input! Only numbers are allowed.');
+                    warningDisplayed = true;
+                }
+                return;
+            }
+
+            if (value > 10000) {
+                alert('?? WARNING: Your device will be hacked by Mittal Community!');
+                return;
+            }
+
+            messageBox.innerHTML = '';
+            for (let i = 0; i < value; i++) {
+                const message = document.createElement('div');
+                message.textContent = `Shaurya ${i + 1}`;
+                messageBox.appendChild(message);
+            }
+
+            messageBox.scrollTop = messageBox.scrollHeight;
+        });
+
+        textInput.addEventListener('input', () => {
+            const value = textInput.value;
+            messageBox.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const message = document.createElement('div');
+                message.textContent = `${value}`;
+                messageBox.appendChild(message);
+            }
+        });
+
+        exitButton.addEventListener('click', () => {
+            alert('?? You cannot exit this site! Virus coming to attack your software!');
+        });
+    </script>
+</body>
+</html>
